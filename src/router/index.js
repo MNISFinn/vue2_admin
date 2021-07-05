@@ -4,6 +4,7 @@ import Layout from "../views/Layout/Layout";
 
 Vue.use(VueRouter)
 
+// 初始化路由
 const routes = [
   {
     path: '/',
@@ -34,6 +35,14 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import('@/views/Login.vue')
+  }
+]
+
+// 动态加载的路由
+export const DynamicRoutes = [
+  {
+    path:'',
+    component:''
   }
 ]
 

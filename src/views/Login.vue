@@ -9,15 +9,15 @@
           <span>密码登录</span>
         </div>
         <div class="login-form">
-          <el-form>
-          <el-form-item>
-            <el-input placeholder="账号"></el-input>
+          <el-form :model="loginForm"  :rules="rules" ref="ruleForm">
+          <el-form-item prop="account">
+            <el-input placeholder="账号" v-model="loginForm.account"></el-input>
+          </el-form-item>
+          <el-form-item prop="password">
+            <el-input type="password" v-model="loginForm.password" placeholder="密码" @keyup.enter="loginSubmit('loginForm')"></el-input>
           </el-form-item>
           <el-form-item>
-            <el-input type="password" placeholder="密码"></el-input>
-          </el-form-item>
-          <el-form-item>
-            <el-button type="primary" class="login-btn" @click="loginSubmit()">登录</el-button>
+            <el-button type="primary" class="login-btn" @click="loginSubmit('loginForm')">登录</el-button>
           </el-form-item>
 <!--          <p class="smalltxt">-->
 <!--            <router-link class="a" to="#">忘记密码</router-link>-->
@@ -32,16 +32,61 @@
 </template>
 
 <script>
-export default {
+
+  // import {login} from "../api";
+
+  export default {
   name: "Login",
   data() {
+    let validateAccount = (rule, value, callback) => {
+      if (value === '') {
+        callback(new Error('请输入账号'));
+      } else {
+        if (this.loginForm.account !== '') {
+          this.$refs.ruleForm.validateField('account');
+        }
+        callback();
+      }
+    };
+    let validatePassword = (rule, value, callback) => {
+      if (value === '') {
+        callback(new Error('请输入密码'));
+      } else {
+        if (this.loginForm.password !== '') {
+          this.$refs.ruleForm.validateField('password');
+        }
+        callback();
+      }
+    };
     return {
-
+      loginForm: {
+        account: '',
+        password: ''
+      },
+      rules: {
+        // account: [
+        //   { validator: validateAccount, trigger: 'blur' }
+        // ],
+        // password: [
+        //   { validator: validatePassword, trigger: 'blur' }
+        // ]
+      }
     }
   },
   methods: {
-    loginSubmit() {
-      this.$router.push('/index')
+  loginSubmit(formName) {
+    //网络请求
+    // let data = await login(this.loginForm.account);
+    // console.log(data)
+      // this.$router.push('/index')
+      // this.$refs[formName].validate((valid) => {
+      //   if (valid) {
+      //     this.$router.push('/index')
+      //   } else {
+      //     console.log('error submit!!');
+      //     return false;
+      //   }
+      // });
     }
   }
 }

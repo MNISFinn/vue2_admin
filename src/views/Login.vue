@@ -55,15 +55,15 @@
   },
   methods: {
   async loginSubmit(formName) {
-    //网络请求
     let data = await login(this.loginForm.account);
-    let token = data.token
-    // 本地 vuex
-    this.$store.commit('LOGIN_IN', token)
-    console.log(data)
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          this.$router.push('/index')
+          //网络请求
+          let token = data.token
+          // 本地 vuex
+          this.$store.commit('LOGIN_IN', token)
+          console.log(data)
+          this.$router.replace('/')
         } else {
           console.log('error submit!!');
           return false;

@@ -46,16 +46,19 @@ export const DynamicRoutes = [
     path: '/',
     name: 'Layout',
     component: Layout,
+    meta: { requiresAuth: true, name: "首页" },
     children:[
       {
         path: '/index',
         name: 'Index',
-        component: () => import('@/views/Home/Index.vue')
+        component: () => import('@/views/Home/Index.vue'),
+        meta: { requiresAuth: true, name: "首页" },
       },
       {
         path: '/order',
         name: 'Order',
-        component: () => import('@/views/Home/Order.vue')
+        component: () => import('@/views/Home/Order.vue'),
+        meta: { requiresAuth: true, name: "订单" },
       },
     ]
   },

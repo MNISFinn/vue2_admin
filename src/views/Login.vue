@@ -2,7 +2,7 @@
   <div class="login-box">
     <div class="login-module">
       <div class="title">
-        GoldMax
+        admin-permission
       </div>
       <el-card class="box-card">
         <div slot="header" class="clearfix">
@@ -14,7 +14,7 @@
             <el-input placeholder="账号" v-model="loginForm.account"></el-input>
           </el-form-item>
           <el-form-item prop="password">
-            <el-input type="password" v-model="loginForm.password" placeholder="密码" @keyup.enter="loginSubmit('loginForm')"></el-input>
+            <el-input type="password" v-model="loginForm.password" placeholder="密码" @keyup.enter.native="loginSubmit('loginForm')"></el-input>
           </el-form-item>
           <el-form-item>
             <el-button type="primary" class="login-btn" @click="loginSubmit('loginForm')">登录</el-button>
@@ -33,7 +33,7 @@
 
 <script>
 
-  // import {login} from "../api";
+  import {login} from "../api";
 
   export default {
   name: "Login",
@@ -74,10 +74,10 @@
     }
   },
   methods: {
-  loginSubmit(formName) {
+  async loginSubmit(formName) {
     //网络请求
-    // let data = await login(this.loginForm.account);
-    // console.log(data)
+    let data = await login(this.loginForm.account);
+    console.log(data)
       // this.$router.push('/index')
       // this.$refs[formName].validate((valid) => {
       //   if (valid) {
@@ -114,15 +114,15 @@
   }
   .login-form {
     //background-color: white;
-    width: 380px;
+    width: 300px;
   }
 
   .el-input {
-    width: 380px;
+    width: 300px;
   }
 
   .login-btn {
-    width: 380px;
+    width: 300px;
   }
 
   .smalltxt {

@@ -1,8 +1,8 @@
 import axios from "axios";
 // import store from "@/store/index.js";
-import baseURL from './baseURL';
+// import baseURL from './baseURL';
 import {Message} from "element-ui";
-import {response} from "express";
+// import {response} from "express";
 const http = {}
 
 var instance = axios.create({
@@ -62,6 +62,7 @@ instance.interceptors.response.use(
 )
 
 http.get = function (url, options) {
+    console.log(url, options)
     return new Promise((resolve, reject) => {
         instance
             .get(url, options)

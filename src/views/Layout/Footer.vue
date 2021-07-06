@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p>Copyright © 2021 GoldMax</p>
+    <p>Copyright © 2021 admin-permission</p>
   </div>
 </template>
 

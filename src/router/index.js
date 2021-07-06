@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Layout from "../views/Layout/Layout";
+import Forbidden from '../views/ErrorPage/403'
+import NotFound from '../views/ErrorPage/404'
 
 Vue.use(VueRouter)
 
@@ -41,8 +43,29 @@ const routes = [
 // 动态加载的路由
 export const DynamicRoutes = [
   {
-    path:'',
-    component:''
+    path: '/',
+    name: 'Layout',
+    component: Layout,
+    children:[
+      {
+        path: '/index',
+        name: 'Index',
+        component: () => import('@/views/Home/Index.vue')
+      },
+      {
+        path: '/order',
+        name: 'Order',
+        component: () => import('@/views/Home/Order.vue')
+      },
+    ]
+  },
+  {
+    path:'/403',
+    component:Forbidden
+  },
+  {
+    path:'*',
+    component:NotFound
   }
 ]
 

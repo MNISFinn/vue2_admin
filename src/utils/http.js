@@ -62,7 +62,6 @@ instance.interceptors.response.use(
 )
 
 http.get = function (url, options) {
-    console.log(url, options)
     return new Promise((resolve, reject) => {
         instance
             .get(url, options)

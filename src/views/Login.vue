@@ -9,7 +9,7 @@
           <span>密码登录</span>
         </div>
         <div class="login-form">
-          <el-form :model="loginForm"  :rules="rules" ref="ruleForm">
+          <el-form :model="loginForm"  :rules="rules" ref="loginForm">
           <el-form-item prop="account">
             <el-input placeholder="账号" v-model="loginForm.account"></el-input>
           </el-form-item>
@@ -38,38 +38,18 @@
   export default {
   name: "Login",
   data() {
-    let validateAccount = (rule, value, callback) => {
-      if (value === '') {
-        callback(new Error('请输入账号'));
-      } else {
-        if (this.loginForm.account !== '') {
-          this.$refs.ruleForm.validateField('account');
-        }
-        callback();
-      }
-    };
-    let validatePassword = (rule, value, callback) => {
-      if (value === '') {
-        callback(new Error('请输入密码'));
-      } else {
-        if (this.loginForm.password !== '') {
-          this.$refs.ruleForm.validateField('password');
-        }
-        callback();
-      }
-    };
     return {
       loginForm: {
         account: '',
         password: ''
       },
       rules: {
-        // account: [
-        //   { validator: validateAccount, trigger: 'blur' }
-        // ],
-        // password: [
-        //   { validator: validatePassword, trigger: 'blur' }
-        // ]
+        account: [
+          { required: true, message: '请输入账号',  trigger: 'blur' }
+        ],
+        password: [
+          { required: true, message: '请输入密码',  trigger: 'blur' }
+        ]
       }
     }
   },
@@ -77,16 +57,18 @@
   async loginSubmit(formName) {
     //网络请求
     let data = await login(this.loginForm.account);
+    let token = data.token
+    // 本地 vuex
+    this.$store.commit('LOGIN_IN', token)
     console.log(data)
-      // this.$router.push('/index')
-      // this.$refs[formName].validate((valid) => {
-      //   if (valid) {
-      //     this.$router.push('/index')
-      //   } else {
-      //     console.log('error submit!!');
-      //     return false;
-      //   }
-      // });
+      this.$refs[formName].validate((valid) => {
+        if (valid) {
+          this.$router.push('/index')
+        } else {
+          console.log('error submit!!');
+          return false;
+        }
+      });
     }
   }
 }

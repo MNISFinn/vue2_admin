@@ -8,8 +8,13 @@ Vue.use(VueRouter)
 
 // 初始化路由
 const routes = [
+  { path: "/",
+    redirect: "/index",
+    hidden: true,
+    children: []
+  },
   {
-    path: '/',
+    path: '/index',
     name: 'Layout',
     component: Layout,
     children:[

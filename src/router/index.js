@@ -8,32 +8,29 @@ Vue.use(VueRouter)
 
 // 初始化路由
 const routes = [
-  { path: "/",
-    redirect: "/index",
-    hidden: true,
-    children: []
-  },
-  {
-    path: '/index',
-    name: 'Layout',
-    component: Layout,
-    children:[
-      {
-        path: '/index',
-        name: 'Index',
-        component: () => import('@/views/Home/Index.vue')
-      },
-      {
-        path: '/order',
-        name: 'Order',
-        component: () => import('@/views/Home/Order.vue')
-      },
-    ]
-  },
+  // { path: "/",
+  //   redirect: "/index",
+  //   hidden: true,
+  //   children: []
+  // },
   // {
-  //   path: '/',
-  //   name: 'Home',
-  //   component: Home
+  //   path: '/index',
+  //   name: 'Layout',
+  //   component: Layout,
+  //   children:[
+  //     {
+  //       path: '/index',
+  //       name: 'Index',
+  //       component: () => import('@/views/Home/Index.vue'),
+  //       meta: {requiresAuth: true, name: '首页'}
+  //     },
+  //     {
+  //       path: '/order',
+  //       name: 'Order',
+  //       component: () => import('@/views/Home/Order.vue'),
+  //       meta: {requiresAuth: true, name: '订单'}
+  //     },
+  //   ]
   // },
   {
     path: '/login',
@@ -48,7 +45,7 @@ const routes = [
 // 动态加载的路由
 export const DynamicRoutes = [
   {
-    path: '/',
+    path: '',
     name: 'Layout',
     component: Layout,
     meta: { requiresAuth: true, name: "首页" },
@@ -57,13 +54,13 @@ export const DynamicRoutes = [
         path: '/index',
         name: 'Index',
         component: () => import('@/views/Home/Index.vue'),
-        meta: { requiresAuth: true, name: "首页" },
+        meta: { name: "首页" },
       },
       {
         path: '/order',
         name: 'Order',
         component: () => import('@/views/Home/Order.vue'),
-        meta: { requiresAuth: true, name: "订单" },
+        meta: { name: "订单" },
       },
     ]
   },

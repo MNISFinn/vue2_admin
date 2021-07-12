@@ -10,9 +10,12 @@
  * @returns {[]} realRouters 过滤之后的符合条件的路由
  */
 export function recursionRouter(userRouter = [], allRouter = []) {
+    console.log('all', allRouter)
+    console.log('user', userRouter)
     var realRouters = [];
     allRouter.forEach((v, i) => {
         userRouter.forEach((item, index) => {
+            console.log(item.name, v.meta.name)
             if (item.name === v.meta.name) {
                 if (item.children && item.children.length > 0) {
                     v.children = recursionRouter(item.children, v.children);

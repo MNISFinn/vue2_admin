@@ -17,9 +17,23 @@ router.beforeEach((to, from, next) => {
         }
     } else {
         // 用户已经登录 路由的访问权限
-        if (to.path === '/login') {
-            next('/');
+        // if (to.path === '/login') {
+        //     next('/');
+        // }
+        // next();
+        if (!store.state.permission.permissionList) {
+            store.dispatch('permission/FETCH_PERMISSION').then(() => {
+                next({
+                    path: to.path
+                })
+            })
+        } else {
+            // store存在权限
+            if (to.path !== '/login') {
+                next();
+            } else {
+                next(from.fullPath)
+            }
         }
-        next();
     }
 })

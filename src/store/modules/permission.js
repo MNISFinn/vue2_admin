@@ -4,7 +4,7 @@ import dynamicRouter from '../../router/dynamic-router'
 import { recursionRouter, setDefaultRoute} from '../../utils/recursion-router'
 
 export default {
-    namespaced: null,
+    namespaced: true,
     state: {
         permissionList: null,
         sidebarMenu: [], //导航登录
@@ -29,6 +29,7 @@ export default {
     actions: {
         async FETCH_PERMISSION({commit, state}){
             let permissionList = await fetchPermission();
+            console.log('list', permissionList)
             // 筛选
             let routes = recursionRouter(permissionList, dynamicRouter);
             let MainContainer = DynamicRoutes.find(v => v.path === '');

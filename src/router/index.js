@@ -6,6 +6,9 @@ import NotFound from '../views/ErrorPage/404'
 
 Vue.use(VueRouter)
 
+const login = () => import('@/views/Login')
+const index = () => import('@/views/Home/Index')
+
 // 初始化路由
 const routes = [
   // { path: "/",
@@ -38,7 +41,7 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import('@/views/Login.vue')
+    component: login
   }
 ]
 
@@ -53,15 +56,15 @@ export const DynamicRoutes = [
       {
         path: '/index',
         name: 'Index',
-        component: () => import('@/views/Home/Index.vue'),
+        component: index,
         meta: { name: "首页" },
       },
-      {
-        path: '/order',
-        name: 'Order',
-        component: () => import('@/views/Home/Order.vue'),
-        meta: { name: "订单" },
-      },
+      // {
+      //   path: '/order',
+      //   name: 'Order',
+      //   component: () => import('@/views/Home/Order.vue'),
+      //   meta: { name: "订单" },
+      // },
     ]
   },
   {

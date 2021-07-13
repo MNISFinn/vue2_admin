@@ -1,10 +1,13 @@
 <template>
-
+  <div>
+    <div>OrderList</div>
+    <el-button>orderList</el-button>
+  </div>
 </template>
 
 <script>
     export default {
-        name: "OrderList"
+        name: "OrderList",
     }
 </script>
 

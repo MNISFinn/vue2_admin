@@ -9,12 +9,22 @@
       </el-dropdown-menu>
     </el-dropdown>
     <span>王小虎</span>
+    <span @click="logout">
+      <el-icon class="el-icon-coordinate"/>
+    </span>
   </el-header>
 </template>
 
 <script>
 export default {
-  name: "Header"
+  name: "Header",
+  methods: {
+    logout() {
+      this.$store.commit('LOGIN_OUT')
+      /* 防止切换角色时addRoutes重复添加路由导致出现警告 */
+      window.location.reload()
+    }
+  }
 }
 </script>
 

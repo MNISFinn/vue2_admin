@@ -29,7 +29,12 @@
         },
         methods: {
             gotoRoute(name) {
+              let path = this.$route.path;
+              path = path.substr(1);
+              let path_name = path.replace(path[0],path[0].toUpperCase());
+              if (path_name !== name) {
                 this.$router.push({name})
+              }
             }
         }
     }

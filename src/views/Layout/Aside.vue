@@ -1,6 +1,6 @@
 <template>
   <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
-    <el-menu :default-active="currentMenu">
+    <el-menu :default-active="$route.name">
       <DynamicMenu :menu-list="sidebarMenu"></DynamicMenu>
     </el-menu>
   </el-aside>

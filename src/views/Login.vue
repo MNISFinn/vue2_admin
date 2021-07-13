@@ -63,7 +63,7 @@
           // 本地 vuex
           this.$store.commit('LOGIN_IN', token)
           console.log(data)
-          this.$router.replace('/')
+          this.$router.replace('/').catch(() =>{})
         } else {
           console.log('error submit!!');
           return false;

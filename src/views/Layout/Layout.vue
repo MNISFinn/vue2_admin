@@ -26,6 +26,8 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style lang="less" scoped>
+  html, body, #layout, .el-container, #asideNav, ul.el-menu {
+    height: 100%;
+  }
 </style>

@@ -4,10 +4,10 @@ import Layout from "../views/Layout/Layout";
 import Forbidden from '../views/ErrorPage/403'
 import NotFound from '../views/ErrorPage/404'
 
-Vue.use(VueRouter)
-
 const login = () => import('@/views/Login')
 const index = () => import('@/views/Home/Index')
+
+Vue.use(VueRouter)
 
 // 初始化路由
 const routes = [

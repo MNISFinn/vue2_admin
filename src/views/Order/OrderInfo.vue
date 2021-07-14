@@ -1,10 +1,12 @@
 <template>
-  <div>403</div>
+  <div>
+    OrderInfo
+  </div>
 </template>
 
 <script>
 export default {
-  name: "Forbidden"
+  name: "OrderInfo"
 }
 </script>
 

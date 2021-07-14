@@ -1,10 +1,11 @@
-import CommonViews from "../views/CommonViews";
+import CommonViews from "@/views/CommonViews";
 // 订单管理
-const OrderList = () => import('../views/Order/OrderList')
+const OrderList = () => import('@/views/Order/OrderList')
+const OrderInfo = () => import('@/views/Order/OrderInfo')
 // 商品管理
-const GoodsList = () => import('../views/Goods/GoodsList')
+const GoodsList = () => import('@/views/Goods/GoodsList')
 // 用户管理
-const UserList = () => import('../views/User/UserList')
+const UserList = () => import('@/views/User/UserList')
 
 const dynamicRoutes = [
     {
@@ -18,6 +19,12 @@ const dynamicRoutes = [
                 name: 'OrderList',
                 component: OrderList,
                 meta: { requiresAuth: true, name: "订单列表" },
+            },
+            {
+                path: '/orderInfo',
+                name: 'OrderInfo',
+                component: OrderInfo,
+                meta: { requiresAuth: true, name: "订单信息" },
             },
         ]
     },

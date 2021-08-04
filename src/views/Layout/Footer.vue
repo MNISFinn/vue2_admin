@@ -1,6 +1,9 @@
 <template>
-  <div>
-    <p>Copyright © 2021 admin-permission</p>
+  <div style="margin-top: 30px;">
+        <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank" style="text-decoration:none;">
+          <img src="@/assets/fridaysoon_beian.png" width="20" style="position: relative;top: 4px;" />
+          琼ICP备2021005132号-1
+        </a>
   </div>
 </template>
 

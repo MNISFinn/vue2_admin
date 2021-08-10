@@ -1,4 +1,4 @@
-const baseUrl = "http://localhost:3300"
+const baseUrl = "http://api.fridaysoon.asia/"
 export default baseUrl
 
 /**

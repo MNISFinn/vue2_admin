@@ -3,7 +3,7 @@
     <div class="login-box">
       <div class="login-module">
         <div class="title">
-          admin-permission
+          工艺网
         </div>
         <el-card class="box-card">
           <div slot="header" class="clearfix">
@@ -49,8 +49,8 @@
   data() {
     return {
       loginForm: {
-        account: '',
-        password: ''
+        account: 'admin',
+        password: 'admin'
       },
       rules: {
         account: [
@@ -64,7 +64,7 @@
   },
   methods: {
   async loginSubmit(formName) {
-    let data = await login(this.loginForm.account);
+    let data = await login(this.loginForm.account, this.loginForm.password);
       this.$refs[formName].validate((valid) => {
         if (valid) {
           //网络请求

@@ -1,22 +1,22 @@
 import axios from "axios";
-// import store from "@/store/index.js";
-// import baseURL from './baseURL';
+import store from "@/store/index.js";
+import baseURL from './baseURL';
 import {Message} from "element-ui";
 // import {response} from "express";
 const http = {}
 
 var instance = axios.create({
-    timeout: 5000
-    // baseURL
+    timeout: 5000,
+    baseURL
 })
 
 // 添加请求拦截器
 instance.interceptors.request.use(
     function (config) {
         // 请求头添加token
-        // if (store.state.UserToken) {
-        //     config.headers.Authorization = store.state.UserToken
-        // }
+        if (store.state.UserToken) {
+            config.headers.Authorization = 'bearer '+store.state.UserToken
+        }
         return config
     },
     function (error) {

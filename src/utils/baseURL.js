@@ -1,4 +1,4 @@
-const baseUrl = "http://api.fridaysoon.asia/"
+const baseUrl = "https://api.fridaysoon.asia/"
 export default baseUrl
 
 /**

@@ -3,7 +3,7 @@
     <div class="login-box">
       <div class="login-module">
         <div class="title">
-          工艺网
+          后台管理
         </div>
         <el-card class="box-card">
           <div slot="header" class="clearfix">
@@ -49,8 +49,8 @@
   data() {
     return {
       loginForm: {
-        account: 'admin',
-        password: 'admin'
+        account: '',
+        password: ''
       },
       rules: {
         account: [

@@ -8,5 +8,5 @@ export function fetchPermission() {
 
 export function login(user, password) {
     // return axios.get('/api/admin_login?name=' + user + '&password=' + password)
-    return axios.get('/login?user=' + user + '&password=' + password)
+    return axios.get('/admin_login?name=' + user + '&password=' + password)
 }

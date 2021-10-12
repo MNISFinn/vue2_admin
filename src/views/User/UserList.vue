@@ -11,7 +11,7 @@
             </el-table-column>
             <el-table-column prop="wechat_name" label="微信昵称">
             </el-table-column>
-            <el-table-column prop="wechat_id" label="微信ID">
+            <el-table-column prop="wechat_open_id" label="微信openid">
             </el-table-column>
             <el-table-column prop="email" label="邮箱">
             </el-table-column>
@@ -21,7 +21,10 @@
             </el-table-column>
             <el-table-column prop="community" label="所在小区">
             </el-table-column>
-            <el-table-column prop="register_time" label="注册时间">
+            <el-table-column label="注册时间" width="150px">
+                <template slot-scope="scope">
+                    {{formatTime(scope.row.register_time)}}
+                </template>
             </el-table-column>
         </el-table>
         <el-pagination
@@ -41,6 +44,7 @@
 
 <script>
     import axios from '@/utils/http';
+    import {formatTime} from '@/utils/common';
 
     export default {
         name: "UserList",
@@ -56,7 +60,6 @@
         mounted() {
             let params = {'page_size':this.page_size, 'page_num':this.current_page}
             axios.post('/api/user_list', params).then((res) => {
-                console.log(res.data)
                 this.tableData = res.data
                 this.total=res.total
             })
@@ -66,7 +69,6 @@
                 console.log(`每页 ${val} 条`);
                 let params = {'page_size':val, 'page_num':this.current_page}
                 axios.post('/api/user_list', params).then((res) => {
-                    console.log(res.data)
                     this.tableData = res.data
                     this.total=res.total
                     this.page_size = val
@@ -76,11 +78,13 @@
                 console.log(`当前页: ${val}`);
                 let params = {'page_size':this.page_size, 'page_num':val}
                 axios.post('/api/user_list', params).then((res) => {
-                    console.log(res.data)
                     this.tableData = res.data
                     this.total=res.total
                     this.current_page = val
                 })
+            },
+            formatTime(timestamp) {
+                return formatTime(new Date(timestamp * 1000))
             }
         }
     }

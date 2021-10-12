@@ -6,6 +6,8 @@ const OrderInfo = () => import('@/views/Order/OrderInfo')
 const GoodsList = () => import('@/views/Goods/GoodsList')
 // 用户管理
 const UserList = () => import('@/views/User/UserList')
+// 小区管理
+const CommunityList = () => import('@/views/Community/CommunityList')
 
 const dynamicRoutes = [
     {
@@ -53,6 +55,20 @@ const dynamicRoutes = [
                 name: 'UserList',
                 component: UserList,
                 meta: { requiresAuth: true, name: "用户列表" },
+            },
+        ]
+    },
+    {
+        path: '/community',
+        name: 'Community',
+        component: CommonViews,
+        meta: {name: '小区管理'},
+        children: [
+            {
+                path: '/communityList',
+                name: 'CommunityList',
+                component: CommunityList,
+                meta: { requiresAuth: true, name: "小区列表" },
             },
         ]
     },

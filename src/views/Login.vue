@@ -62,7 +62,10 @@
       }
     }
   },
-  methods: {
+    mounted() {
+      console.log(process.env.VUE_APP_API_URL);
+    },
+    methods: {
   async loginSubmit(formName) {
     let data = await login(this.loginForm.account, this.loginForm.password);
       this.$refs[formName].validate((valid) => {

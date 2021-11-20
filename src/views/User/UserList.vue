@@ -11,8 +11,8 @@
             </el-table-column>
             <el-table-column prop="wechat_name" label="微信昵称">
             </el-table-column>
-            <el-table-column prop="wechat_open_id" label="微信openid">
-            </el-table-column>
+<!--            <el-table-column prop="wechat_open_id" label="微信openid">-->
+<!--            </el-table-column>-->
             <el-table-column prop="email" label="邮箱">
             </el-table-column>
             <el-table-column prop="mobile" label="手机号">
@@ -59,7 +59,7 @@
         },
         mounted() {
             let params = {'page_size':this.page_size, 'page_num':this.current_page}
-            axios.post('/api/user_list', params).then((res) => {
+            axios.post('/user_list', params).then((res) => {
                 this.tableData = res.data
                 this.total=res.total
             })
@@ -68,7 +68,7 @@
             handleSizeChange(val) {
                 console.log(`每页 ${val} 条`);
                 let params = {'page_size':val, 'page_num':this.current_page}
-                axios.post('/api/user_list', params).then((res) => {
+                axios.post('/user_list', params).then((res) => {
                     this.tableData = res.data
                     this.total=res.total
                     this.page_size = val
@@ -77,7 +77,7 @@
             handleCurrentChange(val) {
                 console.log(`当前页: ${val}`);
                 let params = {'page_size':this.page_size, 'page_num':val}
-                axios.post('/api/user_list', params).then((res) => {
+                axios.post('/user_list', params).then((res) => {
                     this.tableData = res.data
                     this.total=res.total
                     this.current_page = val

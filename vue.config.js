@@ -1,6 +1,6 @@
 module.exports = {
     publicPath: './',
-    outputDir: 'dist',
+    outputDir: process.env.outputDir,
     productionSourceMap: false,
     devServer: {
         proxy: {

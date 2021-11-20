@@ -7,7 +7,8 @@ const http = {}
 
 var instance = axios.create({
     timeout: 5000,
-    baseURL
+    // baseURL
+    baseURL: process.env.VUE_APP_API_URL
 })
 
 // 添加请求拦截器

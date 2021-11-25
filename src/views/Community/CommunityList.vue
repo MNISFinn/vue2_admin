@@ -3,6 +3,7 @@
         <div class="search-area">
             <el-input class="search-input"></el-input>
             <el-button type="primary" class="search-button">搜索</el-button>
+            <el-button @click="addCommunity">添加小区</el-button>
         </div>
         <el-table :data="tableData">
             <el-table-column prop="id" label="ID">
@@ -19,22 +20,26 @@
                 :total="total"
         >
         </el-pagination>
+
+        <add-communities :visible.sync="dialogFormVisible"></add-communities>
     </div>
 
 </template>
 
 <script>
     import axios from '@/utils/http';
+    import AddCommunities from "../../components/addCommunities/index";
 
     export default {
         name: "CommunityList",
+        components: {AddCommunities},
         data() {
             return {
                 tableData: [],
                 total: 0,
                 current_page: 1,
                 page_size: 10,
-
+                dialogFormVisible: false,
             }
         },
         mounted() {
@@ -46,6 +51,9 @@
             },
             handleCurrentChange(val) {
                 console.log(`当前页: `);
+            },
+            addCommunity() {
+                this.dialogFormVisible = true
             }
         }
     }

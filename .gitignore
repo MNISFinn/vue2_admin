@@ -3,6 +3,7 @@ node_modules
 /dist
 /dev
 package-lock.json
+src/assets/china_districts.json
 
 
 # local env files
